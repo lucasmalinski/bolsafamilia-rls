@@ -4,7 +4,7 @@
     "annotations": [
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"amostra_bolsa\"]"
+        "value": "[\"amostra_bolsa\",\"dim_regioes\",\"dim_usuarios_rls\"]"
       },
       {
         "name": "__PBI_TimeIntelligenceEnabled",
@@ -37,6 +37,23 @@
       "returnErrorValuesAsNull": true
     },
     "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "AutoDetected_ed85260c-17ef-422b-b004-7ee0a2d2f8ca",
+        "fromColumn": "UF",
+        "fromTable": "amostra_bolsa",
+        "toColumn": "UF",
+        "toTable": "dim_regioes"
+      },
+      {
+        "name": "5bf6acc4-f2f2-ebc1-d08d-23eaa8d6f8c7",
+        "crossFilteringBehavior": "bothDirections",
+        "fromColumn": "UF",
+        "fromTable": "dim_regioes",
+        "toColumn": "regiao_permitida",
+        "toTable": "dim_usuarios_rls"
+      }
+    ],
     "sourceQueryCulture": "pt-BR",
     "tables": [
       {
@@ -52,20 +69,6 @@
           }
         ],
         "columns": [
-          {
-            "name": "MÊS COMPETÊNCIA",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ],
-            "dataType": "int64",
-            "formatString": "0",
-            "lineageTag": "f5881092-085b-4afc-9c26-2dfdfdf82c70",
-            "sourceColumn": "MÊS COMPETÊNCIA",
-            "summarizeBy": "sum"
-          },
           {
             "name": "UF",
             "annotations": [
@@ -154,14 +157,73 @@
                 "value": "Automatic"
               }
             ],
-            "dataType": "int64",
+            "dataType": "decimal",
             "formatString": "0",
             "lineageTag": "d9d9de0b-d5cb-44fb-b22d-7f168ddd6281",
             "sourceColumn": "VALOR PARCELA",
             "summarizeBy": "sum"
+          },
+          {
+            "name": "ANO COMPETÊNCIA",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "ec75a5fa-3a27-44e4-9f2b-e8f4ca21d0d3",
+            "sourceColumn": "ANO COMPETÊNCIA",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "MÊS COMPETÊNCIA",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "63b165ce-21e5-456e-b8dd-bae515b76b6f",
+            "sourceColumn": "MÊS COMPETÊNCIA",
+            "summarizeBy": "sum"
           }
         ],
         "lineageTag": "b0675ae2-0a93-4b0a-ba0a-df090b51b358",
+        "measures": [
+          {
+            "name": "Total Repasse",
+            "expression": "SUM(amostra_bolsa[VALOR PARCELA])",
+            "formatString": "0",
+            "lineageTag": "99a7a11a-528c-406e-85aa-ad0d7ff779c8"
+          },
+          {
+            "name": "Total de Beneficiários",
+            "expression": "COUNT(amostra_bolsa[NIS FAVORECIDO])",
+            "formatString": "0",
+            "lineageTag": "adece530-9c2f-47ab-a6d8-e20ce2260ae7"
+          },
+          {
+            "name": "Ticket Médio",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "AVERAGE(amostra_bolsa[VALOR PARCELA])",
+            "lineageTag": "2e9a4348-6910-4601-9dfa-489f9cfe44b1"
+          },
+          {
+            "name": "Municípios Atendidos",
+            "expression": "DISTINCTCOUNT(amostra_bolsa[CÓDIGO MUNICÍPIO SIAFI])",
+            "formatString": "0",
+            "lineageTag": "c49d6ae8-4111-4c02-8415-cd3c5fbf0038"
+          }
+        ],
         "partitions": [
           {
             "name": "amostra_bolsa",
@@ -171,9 +233,15 @@
                 "let",
                 "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas.patriota\\Documents\\bolsafamilia-rls\\amostra_bolsa.csv\"),[Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
-                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"MÊS COMPETÊNCIA\", Int64.Type}, {\"UF\", type text}, {\"CÓDIGO MUNICÍPIO SIAFI\", Int64.Type}, {\"NOME MUNICÍPIO\", type text}, {\"CPF FAVORECIDO\", type text}, {\"NIS FAVORECIDO\", Int64.Type}, {\"NOME FAVORECIDO\", type text}, {\"VALOR PARCELA\", Int64.Type}})",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\",{{\"MÊS COMPETÊNCIA\", Int64.Type}, {\"UF\", type text}, {\"CÓDIGO MUNICÍPIO SIAFI\", Int64.Type}, {\"NOME MUNICÍPIO\", type text}, {\"CPF FAVORECIDO\", type text}, {\"NIS FAVORECIDO\", Int64.Type}, {\"NOME FAVORECIDO\", type text}, {\"VALOR PARCELA\", Currency.Type}}),",
+                "    #\"Dividir Coluna pela Posição\" = Table.SplitColumn(Table.TransformColumnTypes(#\"Tipo Alterado\", {{\"MÊS COMPETÊNCIA\", type text}}, \"pt-BR\"), \"MÊS COMPETÊNCIA\", Splitter.SplitTextByRepeatedLengths(4), {\"MÊS COMPETÊNCIA.1\", \"MÊS COMPETÊNCIA.2\"}),",
+                "    #\"Colunas Renomeadas\" = Table.RenameColumns(#\"Dividir Coluna pela Posição\",{{\"MÊS COMPETÊNCIA.1\", \"ANO COMPETÊNCIA\"}, {\"MÊS COMPETÊNCIA.2\", \"MÊS COMPETÊNCIA\"}}),",
+                "    #\"Tipo Alterado1\" = Table.TransformColumnTypes(#\"Colunas Renomeadas\",{{\"ANO COMPETÊNCIA\", type date}}),",
+                "    #\"Ano Extraído\" = Table.TransformColumns(#\"Tipo Alterado1\",{{\"ANO COMPETÊNCIA\", Date.Year, Int64.Type}}),",
+                "    #\"Valor Substituído\" = Table.ReplaceValue(#\"Ano Extraído\",\"01\",\"1\",Replacer.ReplaceText,{\"MÊS COMPETÊNCIA\"}),",
+                "    #\"Tipo Alterado2\" = Table.TransformColumnTypes(#\"Valor Substituído\",{{\"MÊS COMPETÊNCIA\", Int64.Type}})",
                 "in",
-                "    #\"Tipo Alterado\""
+                "    #\"Tipo Alterado2\""
               ],
               "type": "m"
             }
@@ -386,6 +454,174 @@
             "source": {
               "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
               "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_regioes",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Regiao",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4377e9b2-2bf5-41c8-b2f4-4233ee7368e9",
+            "sourceColumn": "Regiao",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "UF",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "946ffd50-e35c-41d2-ba3b-23212c556e2b",
+            "sourceColumn": "UF",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "0058d0b5-9434-4135-9b38-27b4799dcb88",
+        "partitions": [
+          {
+            "name": "dim_regioes",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "Fonte = Table.FromRows(",
+                "{",
+                "{\"Norte\", \"AC\"},",
+                "{\"Norte\", \"AM\"},",
+                "{\"Norte\", \"AP\"},",
+                "{\"Norte\", \"PA\"},",
+                "{\"Norte\", \"RO\"},",
+                "{\"Norte\", \"RR\"},",
+                "{\"Norte\", \"TO\"},",
+                "{\"Nordeste\", \"AL\"},",
+                "{\"Nordeste\", \"BA\"},",
+                "{\"Nordeste\", \"CE\"},",
+                "{\"Nordeste\", \"MA\"},",
+                "{\"Nordeste\", \"PB\"},",
+                "{\"Nordeste\", \"PE\"},",
+                "{\"Nordeste\", \"PI\"},",
+                "{\"Nordeste\", \"RN\"},",
+                "{\"Nordeste\", \"SE\"},",
+                "{\"Centro-Oeste\", \"DF\"},",
+                "{\"Centro-Oeste\", \"GO\"},",
+                "{\"Centro-Oeste\", \"MS\"},",
+                "{\"Centro-Oeste\", \"MT\"},",
+                "{\"Sudeste\", \"ES\"},",
+                "{\"Sudeste\", \"MG\"},",
+                "{\"Sudeste\", \"RJ\"},",
+                "{\"Sudeste\", \"SP\"},",
+                "{\"Sul\", \"PR\"},",
+                "{\"Sul\", \"RS\"},",
+                "{\"Sul\", \"SC\"}",
+                "},",
+                "{\"Regiao\", \"UF\"}",
+                "),",
+                "TipoAlterado = Table.TransformColumnTypes(",
+                "Fonte,",
+                "{",
+                "{\"Regiao\", type text},",
+                "{\"UF\", type text}",
+                "}",
+                ")",
+                "in",
+                "TipoAlterado"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_usuarios_rls",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navegação"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "email_usuario",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1a24f37e-a5c9-4a78-a5d8-dc47ea1f2e6f",
+            "sourceColumn": "email_usuario",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "regiao_permitida",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ab37193d-bb95-4006-9035-ae42d706c22c",
+            "sourceColumn": "regiao_permitida",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "56f2beb4-d0df-42fc-968b-adc53b94eb23",
+        "partitions": [
+          {
+            "name": "dim_usuarios_rls",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "Fonte = Table.FromRows(",
+                "{",
+                "{\"gestor.norte@ministerio.br\", \"Norte\"},",
+                "{\"gestor.nordeste@ministerio.br\", \"Nordeste\"},",
+                "{\"gestor.centroeste@ministerio.br\", \"Centro-Oeste\"},",
+                "{\"gestor.sudeste@ministerio.br\", \"Sudeste\"},",
+                "{\"gestor.sul@ministerio.br\", \"Sul\"}",
+                "},",
+                "{\"email_usuario\", \"regiao_permitida\"}",
+                "),",
+                "TipoAlterado = Table.TransformColumnTypes(",
+                "Fonte,",
+                "{",
+                "{\"email_usuario\", type text},",
+                "{\"regiao_permitida\", type text}",
+                "}",
+                ")",
+                "in",
+                "TipoAlterado"
+              ],
+              "type": "m"
             }
           }
         ]

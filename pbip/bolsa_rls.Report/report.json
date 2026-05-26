@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.57\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.57\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.57\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -25,7 +25,105 @@
       "filters": "[]",
       "height": 720.00,
       "name": "3bf724033b0ddbf3a682",
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"17e617a8ddc4e5594522\",\"layouts\":[{\"id\":0,\"position\":{\"x\":272.3404255319149,\"y\":0,\"z\":3000,\"width\":272.3404255319149,\"height\":102.12765957446808,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"amostra_bolsa.Ticket Médio\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Ticket Médio\"},\"Name\":\"amostra_bolsa.Ticket Médio\",\"NativeReferenceName\":\"Ticket Médio\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Ticket Médio\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"value\":[{\"properties\":{\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"-1D\"}}},\"customFormatString\":{\"expr\":{\"Literal\":{\"Value\":\"'R$, #.##'\"}}}},\"selector\":{\"metadata\":\"amostra_bolsa.Ticket Médio\"}},{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"24D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"parentGroupName\":\"1c8634008228298914ee\"}",
+          "filters": "[]",
+          "height": 102.13,
+          "width": 272.34,
+          "x": 272.34,
+          "y": 0.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"1c8634008228298914ee\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":86.56534954407296,\"z\":8002,\"width\":544.6808510638298,\"height\":308.32826747720367}}],\"singleVisualGroup\":{\"displayName\":\"Grupo 2\",\"groupMode\":0}}",
+          "height": 308.33,
+          "width": 544.68,
+          "x": 0.00,
+          "y": 86.57,
+          "z": 8002.00
+        },
+        {
+          "config": "{\"name\":\"23f9418b561e65a5ab6a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":1280,\"height\":78.78419452887539,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangle'\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 78.78,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"35bbb6677cd985cda5a2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":102.12765957446808,\"z\":4000,\"width\":272.3404255319149,\"height\":103.10030395136779,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"amostra_bolsa.Municípios Atendidos\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Municípios Atendidos\"},\"Name\":\"amostra_bolsa.Municípios Atendidos\",\"NativeReferenceName\":\"Municípios Atendidos\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Municípios Atendidos\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"value\":[{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"-1D\"}}},\"customFormatString\":{\"expr\":{\"Literal\":{\"Value\":\"'#,#'\"}}}},\"selector\":{\"metadata\":\"amostra_bolsa.Municípios Atendidos\"}},{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"24D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"parentGroupName\":\"1c8634008228298914ee\"}",
+          "filters": "[]",
+          "height": 103.10,
+          "width": 272.34,
+          "x": 0.00,
+          "y": 102.13,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"4621104d9cdab8fab5b3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":272.3404255319149,\"y\":102.12765957446808,\"z\":2000,\"width\":272.3404255319149,\"height\":103.10030395136779,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"amostra_bolsa.Total de Beneficiários\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Total de Beneficiários\"},\"Name\":\"amostra_bolsa.Total de Beneficiários\",\"NativeReferenceName\":\"Total de Beneficiários\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Total de Beneficiários\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"value\":[{\"properties\":{\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"-1D\"}}},\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}},\"customFormatString\":{\"expr\":{\"Literal\":{\"Value\":\"'R$, #.##'\"}}}},\"selector\":{\"metadata\":\"amostra_bolsa.Total de Beneficiários\"}},{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"24D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"parentGroupName\":\"1c8634008228298914ee\"}",
+          "filters": "[]",
+          "height": 103.10,
+          "width": 272.34,
+          "x": 272.34,
+          "y": 102.13,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"ab03e58fbe11a4ab3948\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":205.2279635258359,\"z\":5000,\"width\":272.3404255319149,\"height\":103.10030395136779,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"amostra_bolsa.Municípios Atendidos\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Municípios Atendidos\"},\"Name\":\"amostra_bolsa.Municípios Atendidos\",\"NativeReferenceName\":\"Municípios Atendidos\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Municípios Atendidos\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"value\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"24D\"}}}},\"selector\":{\"metadata\":\"amostra_bolsa.Municípios Atendidos\"}}]}},\"parentGroupName\":\"1c8634008228298914ee\"}",
+          "filters": "[]",
+          "height": 103.10,
+          "width": 272.34,
+          "x": 0.00,
+          "y": 205.23,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"afd39f0d8bf50dc51e01\",\"layouts\":[{\"id\":0,\"position\":{\"x\":355.01519756838906,\"y\":0,\"z\":8000,\"width\":355.01519756838906,\"height\":56.413373860182375,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"amostra_bolsa.MÊS COMPETÊNCIA\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"MÊS COMPETÊNCIA\"},\"Name\":\"amostra_bolsa.MÊS COMPETÊNCIA\",\"NativeReferenceName\":\"MÊS COMPETÊNCIA\"}]},\"expansionStates\":[{\"roles\":[\"Values\"],\"levels\":[{\"queryRefs\":[\"amostra_bolsa.MÊS COMPETÊNCIA\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}},\"parentGroupName\":\"b2aba4be28270bcf259b\"}",
+          "filters": "[]",
+          "height": 56.41,
+          "width": 355.02,
+          "x": 355.02,
+          "y": 0.00,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"b2aba4be28270bcf259b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":22.37082066869301,\"y\":11.671732522796352,\"z\":8001,\"width\":710.0303951367781,\"height\":56.413373860182375}}],\"singleVisualGroup\":{\"displayName\":\"Grupo 1\",\"groupMode\":0}}",
+          "height": 56.41,
+          "width": 710.03,
+          "x": 22.37,
+          "y": 11.67,
+          "z": 8001.00
+        },
+        {
+          "config": "{\"name\":\"b7aaf481c27f6eab1e50\",\"layouts\":[{\"id\":0,\"position\":{\"x\":555.3799392097264,\"y\":91.42857142857143,\"z\":6000,\"width\":355.01519756838906,\"height\":296.65653495440733,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"clusteredBarChart\",\"projections\":{\"Category\":[{\"queryRef\":\"amostra_bolsa.UF\",\"active\":true}],\"Y\":[{\"queryRef\":\"amostra_bolsa.Total Repasse\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"UF\"},\"Name\":\"amostra_bolsa.UF\",\"NativeReferenceName\":\"UF\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Total Repasse\"},\"Name\":\"amostra_bolsa.Total Repasse\",\"NativeReferenceName\":\"Total Repasse\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Total Repasse\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 296.66,
+          "width": 355.02,
+          "x": 555.38,
+          "y": 91.43,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"c7315f5ab0b2db476045\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":7000,\"width\":355.01519756838906,\"height\":56.413373860182375,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"amostra_bolsa.ANO COMPETÊNCIA\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"ANO COMPETÊNCIA\"},\"Name\":\"amostra_bolsa.ANO COMPETÊNCIA\",\"NativeReferenceName\":\"ANO COMPETÊNCIA\"}]},\"expansionStates\":[{\"roles\":[\"Values\"],\"levels\":[{\"queryRefs\":[\"amostra_bolsa.ANO COMPETÊNCIA\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"amostra_bolsa\"}},\"Property\":\"ANO COMPETÊNCIA\"}}],\"isPinned\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}},\"parentGroupName\":\"b2aba4be28270bcf259b\"}",
+          "filters": "[]",
+          "height": 56.41,
+          "width": 355.02,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"e328895d1ced1cda881a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":1000,\"width\":272.3404255319149,\"height\":103.10030395136779,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"amostra_bolsa.Total Repasse\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"a\",\"Entity\":\"amostra_bolsa\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Total Repasse\"},\"Name\":\"amostra_bolsa.Total Repasse\",\"NativeReferenceName\":\"Total Repasse\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"a\"}},\"Property\":\"Total Repasse\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"value\":[{\"properties\":{\"labelDisplayUnits\":{\"expr\":{\"Literal\":{\"Value\":\"-1D\"}}},\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}},\"customFormatString\":{\"expr\":{\"Literal\":{\"Value\":\"'R$, #.##'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"24D\"}}}},\"selector\":{\"metadata\":\"amostra_bolsa.Total Repasse\"}}]}},\"parentGroupName\":\"1c8634008228298914ee\"}",
+          "filters": "[]",
+          "height": 103.10,
+          "width": 272.34,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1000.00
+        }
+      ],
       "width": 1280.00
     }
   ]
